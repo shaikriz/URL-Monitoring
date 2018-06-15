@@ -38,4 +38,4 @@ do
 done < output.txt
 fi
 #done
-done < input.txt
+done < src/input.txt
