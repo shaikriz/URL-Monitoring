@@ -13,4 +13,5 @@ script:
 
     - bash tests/checkurl.sh
     - bash tests/exitstatus.sh
-    - shellcheck *.sh
+    - shellcheck src/*.sh
+    - shellcheck tests/*.sh
