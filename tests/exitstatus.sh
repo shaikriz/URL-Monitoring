@@ -1,6 +1,6 @@
 #!/bin/bash
 
-/bin/bash ../src/monitor_np.sh
+/bin/bash ./src/monitor_np.sh
 
 ecode=$(echo $?)
 function testexitcode ()
