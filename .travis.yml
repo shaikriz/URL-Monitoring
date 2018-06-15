@@ -11,6 +11,7 @@ before_install:
     - sudo apt-get -t trusty-backports install shellcheck
 script:
 
+    - bash src/monitor.sh $Buildparams
     - bash tests/checkurl.sh
     - bash tests/exitstatus.sh
     - shellcheck src/monitor.sh
