@@ -36,9 +36,9 @@ response=$(curl -Is -w "%{time_total}"\\n -o /dev/null "$line")
 #Check the status code and assign description accordingly
 if [[ $status == *200* ]]
 then
-echo "$line" , "$status" , ComponentStatus:GREEN , "$time" , $response >> output.txt
+echo "$line" , "$status" , ComponentStatus:GREEN , "$time" , "$response" >> output.txt
 else 
-echo  "$line" , "$status" , NotAccessible , $time , "$response" >> output.txt
+echo  "$line" , "$status" , NotAccessible , "$time" , "$response" >> output.txt
 
 #Print the table with values
 printf '%-*s%-*s%*s%*s%*s%*s\n' "$urlwidth" URL "$statuswidth" Status "$descwidth" Description "$descwidth" Timestamp "$descwidth" ResponseTime
