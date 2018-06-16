@@ -13,7 +13,7 @@ fi
 while read -r line
 do
 sleep 3
-status=$(curl -Is  $line | head -1 | cut -d . -f 2 | cut -c 3-5)
+status=$(curl -Is  "$line" | head -1 | cut -d . -f 2 | cut -c 3-5)
 curl -Is "${array[i]}" 1>>/dev/null
 exit_status=$?
 
@@ -47,4 +47,4 @@ do
     printf '%-*s%-*s%*s%*s%*s%*s%*s\n' "$urlwidth" "$URL" "$statuswidth" "$Status" "$descwidth" "$Description" "$descwidth" "$Timestamp" "$descwidth" "$ResponseTime"
 done < output.txt
 fi
-done < src/input.txt
+done < src/input.txt    
