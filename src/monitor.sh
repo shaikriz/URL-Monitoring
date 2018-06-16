@@ -6,7 +6,7 @@ array=(${url//,/ })
 
 #Formatting for Output Table
 
-urlwidth=38; modwidth=16; descwidth=24
+urlwidth=38; descwidth=24
 a=0
 
 # Delete output file to remove old data
@@ -17,7 +17,7 @@ fi
 
 #Function to print table with values
 print () {
-while IFS=, read URL Status Description Timestamp ResponseTime
+while IFS=, read -r URL Status Description Timestamp ResponseTime
 do
     printf '%-*s%-*s%*s%*s%*s%*s%*s\n' "$urlwidth" "$URL" "$descwidth" "$Status" "$descwidth" "$Description" "$descwidth" "$Timestamp" "$descwidth" "$ResponseTime"
 done < output.txt
@@ -29,9 +29,9 @@ do
 
 status=$(curl -Is -w "%{http_code}"\\n -o /dev/null "${array[i]}")
 curl -Is "${array[i]}" 1>>/dev/null
-
+exit_code=$?
 # Retry 3 times if the url is not accessible
-if [ $? != 0 ]
+if [ ${exit_code} != 0 ]
 then
 until [[ $a == 3 ]]
 do
