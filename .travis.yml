@@ -16,5 +16,4 @@ script:
     - bash tests/checkformat.sh
     - shellcheck src/monitor.sh
     - shellcheck src/monitor_np.sh
-    - shellcheck tests/checkurl.sh
     - shellcheck tests/exitstatus.sh
