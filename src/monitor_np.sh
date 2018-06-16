@@ -23,7 +23,7 @@ then
 until [[ $a == 3 ]]
 do
 ((a++))
-echo -e "\nConnecting to ${array[i]} ..."
+echo -e "\nConnecting to ${line}} ..."
 curl -Is "${line}" 1>>/dev/null
 done
 echo -e "\nConnectivity failure: $status"
