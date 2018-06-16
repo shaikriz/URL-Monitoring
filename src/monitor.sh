@@ -19,7 +19,7 @@ fi
 print () {
 while IFS=, read URL Status Description Timestamp ResponseTime
 do
-    printf '%-*s%-*s%*s%*s%*s%*s%*s\n' "$urlwidth" $URL "$descwidth" $Status "$descwidth" $Description "$descwidth" $Timestamp "$descwidth" $ResponseTime
+    printf '%-*s%-*s%*s%*s%*s%*s%*s\n' "$urlwidth" "$URL" "$descwidth" "$Status" "$descwidth" "$Description" "$descwidth" "$Timestamp" "$descwidth" "$ResponseTime"
 done < output.txt
 }
 
@@ -27,8 +27,8 @@ done < output.txt
 for i in "${!array[@]}"
 do
 
-status=$(curl -Is -w "%{http_code}"\\n -o /dev/null ${array[i]})
-curl -Is ${array[i]} 1>>/dev/null
+status=$(curl -Is -w "%{http_code}"\\n -o /dev/null "${array[i]}")
+curl -Is "${array[i]}" 1>>/dev/null
 
 # Retry 3 times if the url is not accessible
 if [ $? != 0 ]
@@ -39,20 +39,20 @@ do
 echo -e "\nConnecting to ${array[i]} ..."
 curl -Is "${array[i]}" 1>>/dev/null
 done
-echo -e "\nConnectivity failure: $status"
+echo -e "\nConnectivity failure: ${status}"
 echo "Please check the url/format: ${array[i]}"
 status="NA"
 fi 
 time=$(date +"%s")
 
-response=$(curl -Is -w %{time_total}\\n -o /dev/null "${array[i]}")
+response=$(curl -Is -w "%{time_total}"\\n -o /dev/null "${array[i]}")
 
 #Check the status of connectivity and assign description accordingly
 if [[ $status == *200* ]]
 then
-echo "${array[i]}" , $status , ComponentStatus:GREEN , $time , $response >> output.txt
+echo "${array[i]}" , "$status" , ComponentStatus:GREEN , "$time" , "$response" >> output.txt
 else 
-echo  "${array[i]}" , $status , NotAccessible , $time , $response >> output.txt
+echo  "${array[i]}" , "$status" , NotAccessible , "$time" , "$response" >> output.txt
 fi
 done
 
