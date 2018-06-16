@@ -14,6 +14,7 @@ script:
     - bash src/monitor.sh $Buildparams
     - bash tests/checkurl.sh
     - bash tests/exitstatus.sh
+    - bash tests/checkformat.sh
     - shellcheck src/monitor.sh
     - shellcheck src/monitor_np.sh
     - shellcheck tests/checkurl.sh
