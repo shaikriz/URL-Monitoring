@@ -47,4 +47,4 @@ do
     printf '%-*s%-*s%*s%*s%*s%*s%*s\n' "$urlwidth" "$URL" "$statuswidth" "$Status" "$descwidth" "$Description" "$descwidth" "$Timestamp" "$descwidth" "$ResponseTime"
 done < output.txt
 fi
-done < src/input.txt    
+done < input.txt    
