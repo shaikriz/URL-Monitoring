@@ -14,7 +14,7 @@ while read -r line
 do
 sleep 3
 status=$(curl -Is  "$line" | head -1 | cut -d . -f 2 | cut -c 3-5)
-curl -Is "${array[i]}" 1>>/dev/null
+curl -Is "${line}" 1>>/dev/null
 exit_status=$?
 
 # Retry 3 times if the url is not accessible
@@ -24,7 +24,7 @@ until [[ $a == 3 ]]
 do
 ((a++))
 echo -e "\nConnecting to ${array[i]} ..."
-curl -Is ${array[i]} 1>>/dev/null
+curl -Is "${line}" 1>>/dev/null
 done
 echo -e "\nConnectivity failure: $status"
 echo "Please check the url/format: ${array[i]}"
