@@ -9,4 +9,4 @@ function testexitcode ()
 assertEquals 0 $ecode
 }
 
-. shunit2-2.1.6/src/shunit2
+exec shunit2-2.1.6/src/shunit2
