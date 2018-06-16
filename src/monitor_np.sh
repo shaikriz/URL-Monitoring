@@ -24,7 +24,7 @@ until [[ $a == 3 ]]
 do
 ((a++))
 echo -e "\nConnecting to ${array[i]} ..."
-curl -Is "${array[i]}" 1>>/dev/null
+curl -Is ${array[i]} 1>>/dev/null
 done
 echo -e "\nConnectivity failure: $status"
 echo "Please check the url/format: ${array[i]}"
@@ -42,7 +42,7 @@ echo  "$line" , "$status" , NotAccessible , "$time" , "$response" >> output.txt
 
 #Print the table with values
 printf '%-*s%-*s%*s%*s%*s%*s\n' "$urlwidth" URL "$statuswidth" Status "$descwidth" Description "$descwidth" Timestamp "$descwidth" ResponseTime
-while IFS=, read URL Status Description Timestamp ResponseTime
+while IFS=, read -r URL Status Description Timestamp ResponseTime
 do
     printf '%-*s%-*s%*s%*s%*s%*s%*s\n' "$urlwidth" "$URL" "$statuswidth" "$Status" "$descwidth" "$Description" "$descwidth" "$Timestamp" "$descwidth" "$ResponseTime"
 done < output.txt
