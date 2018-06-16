@@ -27,7 +27,7 @@ echo -e "\nConnecting to ${array[i]} ..."
 curl -Is "${line}" 1>>/dev/null
 done
 echo -e "\nConnectivity failure: $status"
-echo "Please check the url/format: ${array[i]}"
+echo "Please check the url/format: $line}"
 status="NA"
 fi
 time=$(date +"%s")
