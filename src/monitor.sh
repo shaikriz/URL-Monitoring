@@ -19,7 +19,7 @@ fi
 print () {
 while IFS=, read -r URL Status Description Timestamp ResponseTime
 do
-    printf '%-*s%-*s%*s%*s%*s%*s%*s\n' "$urlwidth" "$URL" "$descwidth" "$Status" "$descwidth" "$Description" "$descwidth" "$Timestamp" "$descwidth" "$ResponseTime"
+    printf '%-*s%-*s%*s%*s%*s%*s%*s\n' "$urlwidth" "$URL" "$descwidth" "$Status" "$descwidth" "$Description" "$descwidth" "$Timestamp" "$descwidth" "$ResponseTime" | tee -a result.txt
 done < output.txt
 }
 
@@ -57,5 +57,5 @@ fi
 done
 
 #Print the table by parsing the values stored in output file
-printf '%-*s%-*s%*s%*s%*s%*s\n' "$descwidth" URL "$descwidth" Status "$descwidth" Description "$descwidth" Timestamp "$descwidth" ResponseTime | tee result.txt
+printf '%-*s%-*s%*s%*s%*s%*s\n' "$urlwidth" URL "$descwidth" Status "$descwidth" Description "$descwidth" Timestamp "$descwidth" ResponseTime | tee result.txt
 print
