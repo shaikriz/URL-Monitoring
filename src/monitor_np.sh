@@ -41,10 +41,10 @@ else
 echo  "$line" , "$status" , NotAccessible , "$time" , "$response" >> output.txt
 
 #Print the table with values
-printf '%-*s%-*s%*s%*s%*s%*s\n' "$urlwidth" URL "$statuswidth" Status "$descwidth" Description "$descwidth" Timestamp "$descwidth" ResponseTime
+printf '%-*s%-*s%*s%*s%*s%*s\n' "$urlwidth" URL "$statuswidth" Status "$descwidth" Description "$descwidth" Timestamp "$descwidth" ResponseTime | tee result_np.txt
 while IFS=, read -r URL Status Description Timestamp ResponseTime
 do
-    printf '%-*s%-*s%*s%*s%*s%*s%*s\n' "$urlwidth" "$URL" "$statuswidth" "$Status" "$descwidth" "$Description" "$descwidth" "$Timestamp" "$descwidth" "$ResponseTime"
+    printf '%-*s%-*s%*s%*s%*s%*s%*s\n' "$urlwidth" "$URL" "$statuswidth" "$Status" "$descwidth" "$Description" "$descwidth" "$Timestamp" "$descwidth" "$ResponseTime" | tee -a result_np.txt
 done < output.txt
 fi
 done < input.txt    
