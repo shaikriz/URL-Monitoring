@@ -8,5 +8,5 @@ function testexitcode ()
 {
 assertEquals 0 ${ecode}
 }
-
-source ${0%/*}/shunit2
+dir="shunit2-2.1.6/src"
+source "${dir}"/shunit2
