@@ -9,4 +9,5 @@ function testexitcode ()
 assertEquals 0 ${ecode}
 }
 dir="shunit2-2.1.6/src"
+# shellcheck disable=SC1090
 source "${dir}"/shunit2
